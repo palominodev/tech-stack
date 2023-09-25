@@ -1,0 +1,96 @@
+---
+import ReactionIcon from '../components/ReactionIcon.astro'
+import MemoryIcon from '../components/MemoryIcon.astro'
+import VerbalIcon from '../components/VerbalIcon.astro'
+import VisualIcon from '../components/VisualIcon.astro'
+
+
+const ICONS = [
+	{
+		ICON: ReactionIcon, 
+		name: 'Reaction',
+		colors: {
+			bg: 'bg-light-red/10',
+			text: 'text-light-red'
+		},
+		count: 80
+	}, 
+	{
+		ICON: MemoryIcon, 
+		name: 'Memory',
+		colors: {
+			bg: 'bg-orangey-yellow/10',
+			text: 'text-orangey-yellow'
+		},
+		count: 92
+	}, 
+	{
+		ICON: VerbalIcon, 
+		name: 'Verbal',
+		colors: {
+			bg: 'bg-green-teal/10',
+			text: 'text-green-teal'
+		},
+		count: 61
+	}, 
+	{
+		ICON: VisualIcon, 
+		name: 'Visual',
+		colors: {
+			bg: 'bg-cobalt-blue/10',
+			text: 'text-cobalt-blue'
+		},
+		count: 72
+	}
+]
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body class="w-screen sm:h-screen flex justify-center items-center font-hanken-grotesk">
+		<div class="sm:flex shadow-2xl w-full sm:w-auto rounded-2xl">
+			<div class="w-full sm:w-auto bg-gradient-to-b from-light-slate-blue to-light-royal-blue text-white rounded-b-2xl sm:rounded-2xl py-8 px-12 flex flex-col items-center">
+				<h2 class="text-center text-lg text-light-lavender font-bold mb-6">Your Result</h2>
+				<div class="flex justify-center items-center rounded-full h-36 w-36 bg-gradient-to-b from-violet-blue to-persian-blue">
+					<p class="text-center text-light-lavender font-medium"><span class="text-6xl font-extrabold text-white">76</span> <br> of 100</p>
+				</div>
+				<h3 class="text-3xl font-bold text-center my-6">Great</h3>
+				<p class="text-light-lavender font-medium w-56 text-center">You scored higher than 65% of the people who have taken these test</p>
+			</div>
+			<div class="w-full sm:w-[320px] text-light-lavender sm:rounded-2xl py-8 px-12 flex flex-col chil">
+				<h2 class="text-lg text-dark-gray-blue font-extrabold mb-6">Summary</h2>
+				<div>
+					{
+						ICONS.map( (item) => (
+						<div class={`flex justify-between ${item.colors.bg} mb-4 rounded-md p-3`}>
+							<p class={`flex gap-1 ${item.colors.text} font-medium`}>
+								<item.ICON/>
+								{item.name}
+							</p>
+							<p class="font-bold"><spam class="text-dark-gray-blue">{item.count}</spam> / 100</p>
+						</div>
+						))
+					}
+				</div>
+				<button class="bg-dark-gray-blue p-3 rounded-full text-white mt-6 hover:bg-gradient-to-b from-light-slate-blue to-light-royal-blue">Continue</button>
+			</div>
+			
+			
+		</div>
+	</body>
+</html>
+
+<style>
+	@font-face {
+		font-family: Hanken Grotesk;
+		src: url(../assets/fonts/HankenGrotesk-VariableFont_wght.ttf);
+		
+	}
+</style>
